@@ -106,3 +106,19 @@ i {
 .contact_chat {
     height: 4rem;
 }
+
+.mex {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+    width: 40%;
+}
+
+.mex_my {
+    align-self: end;
+    background: #d5f9ba;
+}
+
+.mex_contact {
+    background: rgb(255, 255, 255);
+}
