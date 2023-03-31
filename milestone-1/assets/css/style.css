@@ -4,12 +4,17 @@
     --bz-banner_notify_h: 4rem;
     --bz-searchbar_chat_h: 4rem;
     --bz-input_mex_h: 4rem;
-    --bz-py-body: 1rem
+    --bz-py-body: 1rem;
+    --bg-gray_bg: #dadbd3;
+    --bg-gray_header: #eaeaea;
+    --bg-gray_selected: #e9ebeb;
+    --bg-gray_bar: #f3eeea;
+    --bg-gray_icon: #b1b1b1;
 }
 
 body {
     overflow: hidden;
-    background: linear-gradient(#009688 0%, #009688 15%, #dadbd3 15%, #dadbd3 100%);
+    background: linear-gradient(#009688 0%, #009688 15%, var(--bg-gray_bg) 15%, var(--bg-gray_bg) 100%);
     padding: var(--bz-py-body) 0;
 }
 
