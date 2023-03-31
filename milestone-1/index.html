@@ -74,12 +74,12 @@
                     <div class="col-8 px-0">
                         <div class="contact_active">
                             <header class="d-flex align-items-center justify-content-between bg_gray_header p-2">
-                                <img class="circle_photo" :src="contacts[activeContact].avatar" alt="">
-                                <div class="flex-grow-1 ps-3">
+                                <img v-if="activeContact > -1" class="circle_photo" :src="contacts[activeContact].avatar" alt="">
+                                <div v-if="activeContact > -1" class="flex-grow-1 ps-3">
                                     <div class="contact_name">{{contacts[activeContact].name}}</div>
                                     <div class="fs-7 last_mex fs_7">Ultimo messaggio inviato alle {{getLastMexDate(contacts[activeContact].messages)}}</div>
                                 </div>
-                                <div class="icons d-flex gap-3 pe-3">
+                                <div v-if="activeContact > -1" class="icons d-flex gap-3 pe-3">
                                     <i class="fa fa-search "></i>
                                     <i class="fa-solid fa-paperclip"></i>
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -89,7 +89,7 @@
 
                             <div class="chat p-5">
                                 <div class="d-flex flex-column">
-                                    <div v-for="message in contacts[activeContact].messages" class="mex" :class="message.status === 'sent' ? 'mex_my' : 'mex_contact'">
+                                    <div v-if="activeContact > -1" v-for="message in contacts[activeContact].messages" class="mex" :class="message.status === 'sent' ? 'mex_my' : 'mex_contact'">
                                         <div class="message"> {{message.message}} </div>
                                         <div class="time fs_7 text-end">12:34</div>
                                     </div>
@@ -97,7 +97,7 @@
                             </div>
                             <!-- /.chat  -->
 
-                            <div class="input_mex py-2 bg_gray_bar">
+                            <div v-if="activeContact > -1" class="input_mex py-2 bg_gray_bar">
                                 <div class="d-flex ">
                                     <div class="bg_gray_bar px-4 py-2"> <i class="fs-5 fa-regular fa-face-smile text-secondary"></i> </div>
                                     <input class="border-0 rounded-1 w-100 px-3 pt-2 pb-3" type="textarea" placeholder="Scrivi un messaggio">
