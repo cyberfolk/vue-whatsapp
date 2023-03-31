@@ -10,6 +10,7 @@
     --bg-gray_selected: #e9ebeb;
     --bg-gray_bar: #f3eeea;
     --bg-gray_icon: #b1b1b1;
+    --bg-blue_banner: #8EDAFC;
 }
 
 body {
@@ -65,7 +66,7 @@ i {
     font-size: 1.5rem;
 }
 
-.contact_photo {
+.circle_tag {
     /* adv: the target gets the size of the parent */
     height: 100%;
     aspect-ratio: 1/1;
@@ -75,4 +76,20 @@ i {
 
 .contact_name {
     font-weight: bold;
+}
+
+.bg_blue {
+    background-color: var(--bg-blue_banner);
+}
+
+.color_blue {
+    color: var(--bg-blue_banner);
+}
+
+.centre_fix {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
 }
