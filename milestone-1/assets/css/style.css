@@ -18,6 +18,10 @@ body {
     padding: var(--bz-py-body) 0;
 }
 
+i {
+    color: var(--bg-gray_icon);
+}
+
 .boolzap_window {
     height: calc(100vh - 2* var(--bz-py-body));
     overflow: hidden;
@@ -53,10 +57,22 @@ body {
     height: var(--bz-input_mex_h);
 }
 
-.circletag {
+.contact_info {
+    height: 100%;
+}
+
+.header_my_contact i {
+    font-size: 1.5rem;
+}
+
+.contact_photo {
     /* adv: the target gets the size of the parent */
-    /* width: 100%; */
+    height: 100%;
     aspect-ratio: 1/1;
     border-radius: 50%;
     overflow: hidden;
+}
+
+.contact_name {
+    font-weight: bold;
 }
