@@ -181,14 +181,21 @@ createApp({
     methods: {
         getLastMex(messages) {
             const len = messages.length;
-            return messages[len - 1].message;
+            const message = messages[len - 1].message;
+            console.log(message.length);
+            if (message.length > 40) {
+                console.log(message.length);
+                return `${message.substring(0, 37)}...`;
+            } else {
+                return message;
+            }
         },
         getLastMexDate(messages) {
             const len = messages.length;
-            console.log(messages[len - 1].date);
+            //console.log(messages[len - 1].date);
             const date = new Date(messages[len - 1].date);
-            console.log(date);
-            console.log(date.getMinutes());
+            //console.log(date);
+            //console.log(date.getMinutes());
             return `${date.getHours()}:${date.getMinutes()}`
         },
         getActiveContact(index) {
