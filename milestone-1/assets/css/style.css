@@ -4,15 +4,17 @@
     --bz-banner_notify_h: 4rem;
     --bz-searchbar_chat_h: 4rem;
     --bz-input_mex_h: 4rem;
+    --bz-py-body: 3rem
 }
 
 body {
     overflow: hidden;
     background-color: var(--dsb_light);
+    padding: var(--bz-py-body) 0;
 }
 
 .boolzap_window {
-    height: 100vh;
+    height: calc(100vh - 2* var(--bz-py-body));
     overflow: hidden;
 }
 
