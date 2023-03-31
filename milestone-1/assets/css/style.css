@@ -5,6 +5,7 @@
     --bz-searchbar_chat_h: 3.2rem;
     --bz-input_mex_h: 4rem;
     --bz-py-body: 2rem;
+    --bz-my_contact_w: 22rem;
     --bg-gray_bg: #dadbd3;
     --bg-gray_header: #eaeaea;
     --bg-gray_bar: #f3eeea;
@@ -23,6 +24,15 @@ body {
 .boolzap_window {
     height: calc(100vh - 2* var(--bz-py-body));
     overflow: hidden;
+}
+
+.my_contact {
+    width: var(--bz-my_contact_w);
+    flex-shrink: 0;
+}
+
+.contact_active {
+    width: calc(100% - var(--bz-my_contact_w));
 }
 
 .my_contact header {
