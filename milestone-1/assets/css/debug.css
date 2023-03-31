@@ -1,26 +1,24 @@
-/* #region Debug ...........................*/
 /* Il background-color lo metto in style.css */
 .debug * {
     border: 1px dashed red;
 }
 
-/* #region Grid ............................ */
 .debug .container {
     background-color: green;
-    padding: 0.1rem;
 }
 
 .debug .row {
     background-color: yellow;
-    padding: 0.1rem;
 }
 
-.debug [class^="col_"] {
+.debug [class^="col-"] {
     background-color: aqua;
-    padding: 0.1rem;
 }
 
-/* #endregion Grid ......................... */
+.debug div {
+    background-color: rgb(255, 136, 0);
+}
+
 /* #region common ...........................*/
 .debug header {
     padding: 1rem;
@@ -39,4 +37,3 @@
 }
 
 /* #endregion common ....................... */
-/* #endregion Debug ........................ */

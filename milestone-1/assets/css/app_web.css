@@ -1,6 +1,8 @@
 /* #region... common ....................... */
 :root {
-    --apw_app_top_h: 4rem;
+    --bz-header_my_contact: 4rem;
+    --bz-header_contact_active: 4rem;
+    --bz-searchbar: 4rem;
     --apw_sidebar_w_lg: 9rem;
     --apw_sidebar_w: 4rem;
 }

@@ -1,0 +1,27 @@
+:root {
+    --bz-header_my_contact_h: 4rem;
+    --bz-header_contact_active_h: 4rem;
+    --bz-banner_notify_h: 4rem;
+    --bz-searchbar_chat_h: 4rem;
+    --bz-input_mex_h: 4rem;
+}
+
+.header_my_contact {
+    height: var(--bz-header_my_contact_h);
+}
+
+.header_contact_active {
+    height: var(--bz-header_contact_active_h);
+}
+
+.banner_notify {
+    height: var(--bz-banner_notify_h);
+}
+
+.searchbar_chat {
+    height: var(--bz-searchbar_chat_h);
+}
+
+.input_mex {
+    height: var(--bz-input_mex_h);
+}
