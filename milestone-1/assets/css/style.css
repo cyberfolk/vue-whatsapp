@@ -27,6 +27,10 @@ i {
     background-color: var(--bg-gray_header);
 }
 
+.bg_gray_bar {
+    background-color: var(--bg-gray_bar);
+}
+
 .boolzap_window {
     height: calc(100vh - 2* var(--bz-py-body));
     overflow: hidden;
@@ -50,8 +54,9 @@ i {
 }
 
 .chat {
-    height: calc(100vh - var(--bz-header_contact_active_h) - var(--bz-input_mex_h));
+    height: calc(100vh - var(--bz-header_contact_active_h) - var(--bz-input_mex_h) - 2* var(--bz-py-body));
     overflow-y: auto;
+    background-image: url(../img/mine.jpg);
 }
 
 .searchbar_chat {
