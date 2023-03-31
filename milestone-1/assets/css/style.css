@@ -52,3 +52,11 @@ body {
 .input_mex {
     height: var(--bz-input_mex_h);
 }
+
+.circletag {
+    /* adv: the target gets the size of the parent */
+    /* width: 100%; */
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
