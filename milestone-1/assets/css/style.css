@@ -106,6 +106,7 @@ body {
     aspect-ratio: 1/1;
     border-radius: 50%;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .contact_name {
@@ -141,10 +142,6 @@ i {
 
 .active {
     background-color: var(--bg-gray_active);
-}
-
-:not(.active) {
-    background-color: white !;
 }
 
 /* #endregion utility ....................... */
