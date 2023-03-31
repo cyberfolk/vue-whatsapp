@@ -4,7 +4,7 @@
     --bz-banner_notify_h: 4rem;
     --bz-searchbar_chat_h: 4rem;
     --bz-input_mex_h: 4rem;
-    --bz-py-body: 1rem;
+    --bz-py-body: 2rem;
     --bg-gray_bg: #dadbd3;
     --bg-gray_header: #eaeaea;
     --bg-gray_selected: #e9ebeb;
@@ -21,6 +21,10 @@ body {
 
 i {
     color: var(--bg-gray_icon);
+}
+
+.bg_gray_header {
+    background-color: var(--bg-gray_header);
 }
 
 .boolzap_window {
@@ -92,4 +96,8 @@ i {
     justify-content: center;
     align-content: center;
     flex-direction: column;
+}
+
+.contact_chat {
+    height: 4rem;
 }
