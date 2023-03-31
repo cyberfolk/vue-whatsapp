@@ -52,8 +52,8 @@
 
                     <div class="chat_list bg-white">
                         <ul class="list-unstyled">
-                            <li v-for="(contact, index) in contacts" class="border-bottom ps-3">
-                                <div @click="getActiveContact(index)" class="contact_chat d-flex p-2 ps-1" :class="index === activeContact ? 'active' : ''">
+                            <li v-for="(contact, index) in contacts" class="border-bottom ps-3" :class="index === activeContact ? 'active' : ''">
+                                <div @click="getActiveContact(index)" class="contact_chat d-flex p-2 ps-1">
                                     <img class=" circle_photo" :src="contact.avatar" alt="">
                                     <div class="ps-3 flex-grow-1">
                                         <div class="d-flex justify-content-between">
