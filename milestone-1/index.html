@@ -53,10 +53,10 @@
                             <!-- ./searchbar_chat -->
 
                             <div class="chat_list">
-                                <ul class="list-group">
+                                <ul class="list-group bg-white">
                                     <li v-for="(contact, index) in contacts" class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" :src="contact.avatar" alt="">
+                                        <div @click="getActiveContact(index)" class="contact_chat d-flex p-2 ps-3" :class="index === activeContact ? 'active' : ''">
+                                            <img class=" circle_photo" :src="contact.avatar" alt="">
                                             <div class="ps-3 flex-grow-1">
                                                 <div class="contact_name">{{contact.name}}</div>
                                                 <div class="last_mex fs_7">{{getLastMex(contact.messages)}}</div>
@@ -74,10 +74,10 @@
                     <div class="col-8 px-0">
                         <div class="contact_active">
                             <header class="d-flex align-items-center justify-content-between bg_gray_header p-2">
-                                <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
+                                <img class="circle_photo" :src="contacts[activeContact].avatar" alt="">
                                 <div class="flex-grow-1 ps-3">
-                                    <div class="contact_name">Sofia</div>
-                                    <div class="fs-7 last_mex fs_7">Ultimo messaggio inviato alle 12</div>
+                                    <div class="contact_name">{{contacts[activeContact].name}}</div>
+                                    <div class="fs-7 last_mex fs_7">Ultimo messaggio inviato alle {{getLastMexDate(contacts[activeContact].messages)}}</div>
                                 </div>
                                 <div class="icons d-flex gap-3 pe-3">
                                     <i class="fa fa-search "></i>
@@ -89,20 +89,8 @@
 
                             <div class="chat p-5">
                                 <div class="d-flex flex-column">
-                                    <div class="mex mex_my">
-                                        <div class="text"> Hai portato a spasso il cane </div>
-                                        <div class="time fs_7 text-end">12:34</div>
-                                    </div>
-                                    <div class="mex mex_contact">
-                                        <div class="text"> Hai portato a spasso il cane </div>
-                                        <div class="time fs_7 text-end">12:34</div>
-                                    </div>
-                                    <div class="mex mex_my">
-                                        <div class="text"> Hai portato a spasso il cane </div>
-                                        <div class="time fs_7 text-end">12:34</div>
-                                    </div>
-                                    <div class="mex mex_contact">
-                                        <div class="text"> Hai portato a spasso il cane </div>
+                                    <div v-for="message in contacts[activeContact].messages" class="mex" :class="message.status === 'sent' ? 'mex_my' : 'mex_contact'">
+                                        <div class="message"> {{message.message}} </div>
                                         <div class="time fs_7 text-end">12:34</div>
                                     </div>
                                 </div>

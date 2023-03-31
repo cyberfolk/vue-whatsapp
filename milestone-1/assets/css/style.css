@@ -7,10 +7,10 @@
     --bz-py-body: 2rem;
     --bg-gray_bg: #dadbd3;
     --bg-gray_header: #eaeaea;
-    --bg-gray_selected: #e9ebeb;
     --bg-gray_bar: #f3eeea;
     --bg-gray_icon: #b1b1b1;
     --bg-blue_banner: #8EDAFC;
+    --bg-gray_active: #e9ebeb;
 }
 
 /* #region    app-web ....................... */
@@ -130,5 +130,12 @@ i {
     color: var(--bg-gray_icon);
 }
 
+.active {
+    background-color: var(--bg-gray_active);
+}
+
+:not(.active) {
+    background-color: white !;
+}
 
 /* #endregion utility ....................... */
