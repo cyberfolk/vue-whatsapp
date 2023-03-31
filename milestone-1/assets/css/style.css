@@ -6,6 +6,16 @@
     --bz-input_mex_h: 4rem;
 }
 
+body {
+    overflow: hidden;
+    background-color: var(--dsb_light);
+}
+
+.boolzap_window {
+    height: 100vh;
+    overflow: hidden;
+}
+
 .header_my_contact {
     height: var(--bz-header_my_contact_h);
 }
@@ -16,6 +26,16 @@
 
 .banner_notify {
     height: var(--bz-banner_notify_h);
+}
+
+.chat_list {
+    height: calc(100vh - var(--bz-header_my_contact_h) - var(--bz-banner_notify_h) - var(--bz-banner_notify_h));
+    overflow-y: auto;
+}
+
+.chat {
+    height: calc(100vh - var(--bz-header_contact_active_h) - var(--bz-input_mex_h));
+    overflow-y: auto;
 }
 
 .searchbar_chat {
