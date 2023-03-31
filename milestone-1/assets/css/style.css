@@ -38,7 +38,7 @@ body {
 }
 
 .my_contact .chat_list {
-    height: calc(100vh - var(--bz-header_my_contact_h) - var(--bz-banner_notify_h) - var(--bz-banner_notify_h));
+    height: calc(100vh - var(--bz-header_my_contact_h) - var(--bz-banner_notify_h) - var(--bz-banner_notify_h) - var(--bz-py-body));
     overflow-y: auto;
 }
 
