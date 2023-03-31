@@ -16,7 +16,7 @@
         <title>Boolzap</title>
     </head>
     <body class="">
-        <div class="boolzap_window">
+        <div id="app" class="boolzap_window">
             <div class="container">
                 <div class="row">
                     <div class="col-4 px-0">
@@ -54,128 +54,19 @@
 
                             <div class="chat_list">
                                 <ul class="list-group">
-                                    <li class="border-bottom">
+                                    <li v-for="(contact, index) in contacts" class="border-bottom">
                                         <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
+                                            <img class="circle_photo" :src="contact.avatar" alt="">
                                             <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
+                                                <div class="contact_name">{{contact.name}}</div>
+                                                <div class="last_mex fs_7">{{getLastMex(contact.messages)}}</div>
                                             </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
-                                        </div>
-                                    </li>
-                                    <li class="border-bottom">
-                                        <div class="contact_chat d-flex bg-white p-2 ps-3">
-                                            <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
-                                            <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">Sofia</div>
-                                                <div class="last_mex fs_7">Ultimo messaggio inviato</div>
-                                            </div>
-                                            <div class="time fs_7">12:00</div>
+                                            <div class="time fs_7">{{getLastMexDate(contact.messages)}}</div>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
+                            <!-- /.chat_list -->
                         </div>
                         <!-- /.my_contact -->
                     </div>
