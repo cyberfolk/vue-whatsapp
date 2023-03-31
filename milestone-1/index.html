@@ -52,16 +52,18 @@
                             </div>
                             <!-- ./searchbar_chat -->
 
-                            <div class="chat_list">
-                                <ul class=" bg-white list-unstyled">
+                            <div class="chat_list bg-white">
+                                <ul class="list-unstyled">
                                     <li v-for="(contact, index) in contacts" class="border-bottom ps-3">
                                         <div @click="getActiveContact(index)" class="contact_chat d-flex p-2 ps-1" :class="index === activeContact ? 'active' : ''">
                                             <img class=" circle_photo" :src="contact.avatar" alt="">
                                             <div class="ps-3 flex-grow-1">
-                                                <div class="contact_name">{{contact.name}}</div>
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="contact_name">{{contact.name}}</div>
+                                                    <div class="time">{{getLastMexDate(contact.messages)}}</div>
+                                                </div>
                                                 <div class="last_mex fs_7">{{getLastMex(contact.messages)}}</div>
                                             </div>
-                                            <div class="time fs_7">{{getLastMexDate(contact.messages)}}</div>
                                         </div>
                                     </li>
                                 </ul>

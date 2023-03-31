@@ -134,6 +134,11 @@ i {
     color: var(--bg-gray_icon);
 }
 
+.time {
+    font-size: 0.8rem;
+    color: var(--bg-gray_icon);
+}
+
 .active {
     background-color: var(--bg-gray_active);
 }
