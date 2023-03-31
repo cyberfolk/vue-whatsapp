@@ -1,0 +1,126 @@
+/* #region Utilities ....................... */
+/* ................................. css ↓↓↓ */
+.circletag {
+    /* adv: the target gets the size of the parent */
+    /* width: 100%; */
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.spacer {
+    border-top: 1px solid gray;
+    border-bottom: none;
+    /* margin: override case by case*/
+    /* margin: 1; */
+}
+
+/* #region Click ........................... */
+/* ................................. css ↓↓↓ */
+.section_tmp input[type=checkbox] {
+    /* appearance: nasconde il normale checkbox */
+    appearance: none;
+    font-family: FontAwesome;
+    font-size: 4rem;
+}
+
+.section_tmp input[type=checkbox]:before {
+    /* Off state */
+    content: "\f204";
+}
+
+.section_tmp input[type=checkbox]:checked:before {
+    /* On state */
+    content: "\f205";
+}
+
+.section_tmp input[type=checkbox]:checked + .target-tmp {
+    /* ovveride case by case */
+    /* descrivere che succede al click*/
+    display: block;
+}
+
+/* #endregion Click ........................ */
+/* #region Decoration ...................... */
+/* ................................. css ↓↓↓ */
+
+.target_tmp {
+    /* .target_tmp must be a display-block */
+    position: relative;
+}
+
+.target_tmp::before,
+.target_tmp::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 5px;
+    width: 100px;
+    background-color: brown;
+    animation: up_down 3s linear infinite;
+}
+
+.target_tmp::before {
+    left: 100%;
+}
+
+.target_tmp::after {
+    right: 100%;
+}
+
+/* #endregion Decoration ................... */
+/* #region ul-change-dot ................... */
+/* ................................. css ↓↓↓ */
+:root {
+    --icon-size: .8em;
+    --gutter: .5em;
+}
+
+.target_tmp ul {
+    /* local override of a common tag */
+    padding-left: var(--icon-size);
+}
+
+.target_tmp li {
+    /* local override of a common tag */
+    padding-left: var(--gutter);
+}
+
+.target_tmp > li::marker {
+    font-family: FontAwesome;
+    content: "\f00c";
+}
+
+/* #endregion ul-change-dot ................ */
+/* #region Round-Check-Cross ............... */
+/* ................................. css ↓↓↓ */
+
+.round::before {
+    /* Generalmente da dare alle icone di font-awesome, vi crea un cerchio attorno */
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    font-size: 0.65rem;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.check::before {
+    /** Va in coppia con round se voglio riempirlo automaticamente con una spunta verde di check */
+    content: "\2713";
+    border: 1px solid green;
+    color: green;
+}
+
+.cross::before {
+    /** Va in coppia con round se voglio riempirlo automaticamente con una spunta verde di cross */
+    content: "\2717";
+    border: 1px solid red;
+    color: red;
+}
+
+/* #endregion Round-Check-Cross ............ */
+/* #endregion Utilities .................... */

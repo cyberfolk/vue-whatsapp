@@ -1,0 +1,40 @@
+/* #region... common ....................... */
+:root {
+    --apw_app_top_h: 4rem;
+    --apw_sidebar_w_lg: 9rem;
+    --apw_sidebar_w: 4rem;
+}
+
+/* #endregion common ....................... */
+/* #region... app_web_dashboard ............ */
+/* #region... #app_top ..................... */
+#app_top {
+    height: var(--apw_app_top_h);
+}
+
+/* ................................. css ↓↓↓ */
+/* #endregion #app_top ..................... */
+/* #region... #app_wrapper ................. */
+#app_wrapper {
+    height: calc(100vh - var(--apw_app_top_h));
+    overflow: hidden;
+}
+
+/* ................................. css ↓↓↓ */
+/* #region... #sidebar ..................... */
+/* ................................. css ↓↓↓ */
+#sidebar {
+    width: var(--apw_sidebar_w);
+}
+
+/* #endregion #sidebar ..................... */
+/* #region... #app_main .................... */
+/* ................................. css ↓↓↓ */
+#app_main {
+    width: calc(100% - var(--apw_sidebar_w));
+    overflow-y: auto;
+}
+
+/* #endregion #app_main .................... */
+/* #endregion #app_wrapper ................. */
+/* #endregion app_web_dashboard ............ */

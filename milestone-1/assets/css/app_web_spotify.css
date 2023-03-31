@@ -1,0 +1,66 @@
+/* #region... common ....................... */
+:root {
+    --apw_bottom_h: 85px;
+    --apw_sidebar_w: 55px;
+    --apw_sidebar_top_h: 170px;
+    --apw_sidebar_bottom_h: 80px;
+}
+
+/* #endregion common ....................... */
+/* #region... app_web_spotify .............. */
+/* #region... app_top ...................... */
+/* ................................. css ↓↓↓ */
+#app_top {
+    height: calc(100vh - var(--apw_bottom_h));
+    display: flex
+}
+
+/* #region... content ...................... */
+/* ................................. css ↓↓↓ */
+#app_top .content {
+    width: calc(100% - var(--apw_sidebar_w));
+    overflow-y: auto;
+}
+
+/* #endregion content ...................... */
+/* #region... sidebar ...................... */
+/* ................................. css ↓↓↓ */
+#app_top .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: var(--apw_sidebar_w);
+    overflow: hidden;
+}
+
+/* #region... sidebar_top .................. */
+/* ................................. css ↓↓↓ */
+#app_top .sidebar_top {
+    height: var(--apw_sidebar_top_h);
+}
+
+/* #endregion sidebar_top .................. */
+/* #region... sidebar_middle ............... */
+/* ................................. css ↓↓↓ */
+#app_top .sidebar_middle {
+    height: calc(100% - var(--apw_sidebar_bottom_h) - var(--apw_sidebar_top_h));
+    overflow-y: auto;
+}
+
+/* #endregion sidebar_middle ............... */
+/* #region... sidebar_bottom ............... */
+/* ................................. css ↓↓↓ */
+#app_top .sidebar_bottom {
+    height: var(--apw_sidebar_bottom_h);
+}
+
+/* #endregion sidebar_bottom ............... */
+/* #endregion sidebar ...................... */
+/* #endregion #app_top ..................... */
+/* #region... #app_bottom .................. */
+/* ................................. css ↓↓↓ */
+#app_bottom {
+    height: var(--apw_bottom_h);
+}
+
+/* #endregion #app_bottom .................. */
+/* #endregion app_web_spotify .............. */

@@ -1,0 +1,27 @@
+/* #region Common Rules */
+body {
+    font-family: var(--b-font);
+}
+
+
+:root {
+    --b_shadow: #9d9d9d;
+    --b_font: 'Circular Std', sans-serif;
+
+    --b_white: white;
+    --b_black: black;
+    --b_gray_1: #d2d2d2;
+    --b_gray_2: #a3a3a3;
+    --b_gray_3: #717171;
+    --b_gray: gray;
+
+    --b_dark: #22272b;
+    --b_dark_secondary: #671435;
+    --b_primary: #8ea0e0;
+    --b_light: #f7f7f6;
+    --b_light_primar: #B4D0E7;
+    --b_lighter: rgb(205, 221, 255);
+
+}
+
+/* #endregion Common Rules */
