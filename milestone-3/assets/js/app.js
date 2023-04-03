@@ -48,8 +48,9 @@ createApp({
                 const newMessageObj = new Message(new Date(), this.newMessage, 'sent');
                 this.contacts[this.activeContact].messages.push(newMessageObj);
                 this.newMessage = "";
+                const tmp = this.activeContact
                 setTimeout(() => {
-                    this.reciveMessage(this.activeContact)
+                    this.reciveMessage(tmp)
                 }, 2 * 1000);
             }
         },
