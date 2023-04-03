@@ -6,8 +6,9 @@
 
 import { contacts } from "./db.js"; // import of a default export
 import { randomTextMessages } from "./db.js"; // import of a default export
-import { Contact } from "./Models/Contact.js"; // import of a default export
+import { contacts_status } from "./db.js"; // import of a default export
 import { Message } from "./Models/Message.js"; // import of a default export
+import { CStatus } from "./Models/CStatus.js"; // import of a default export
 
 const { createApp } = Vue
 
@@ -18,7 +19,7 @@ createApp({
             contacts: contacts,
             newMessage: "",
             searcContact: "",
-            activeContactStatus: "",
+            contacts_status: contacts_status,
         }
     },
     methods: {
@@ -70,24 +71,46 @@ createApp({
         },
 
         waitForAnswer() {
-            this.contacts[this.activeContact].visible = false; // flag wichtells me that I'm waiting for an answer from that specific user 
-            this.activeContactStatus = 'WRITING';
+            const tmpActvContact = this.activeContact;
+            const cStatus = this.getCStatusByIndex(tmpActvContact);
+            if (cStatus) {
+                this.getCStatusByIndex(tmpActvContact).status = 'WRITING';
+            } else {
+                this.contacts_status.push(new CStatus("WRITING", tmpActvContact))
+            }
+            //console.log(contacts_status);
             this.updateStatus();
-            const tmpActvContact = this.activeContact //passage to value to avoid binding
 
             // Set timeout before the user replies
             setTimeout(() => {
                 this.reciveMessage(tmpActvContact);
-                this.activeContactStatus = 'ONLINE';
+                this.getCStatusByIndex(tmpActvContact).status = 'ONLINE';
                 this.updateStatus();
-            }, 2 * 1000);
+            }, 5 * 1000);
 
             // Set timeout before the user leaves the chat
             setTimeout(() => {
-                this.activeContactStatus = 'NOT-ONLINE';
+                this.removeCStatusByIndex(tmpActvContact);
+                //console.log(contacts_status);
                 this.updateStatus();
-                this.contacts[this.activeContact].visible = true;
-            }, 5 * 1000);
+            }, 10 * 1000);
+        },
+
+        updateStatus() {
+            const cStatus = this.contacts_status.find(cStatus => cStatus.index === this.activeContact)
+            //console.log(contacts_status, cStatus, this.activeContact);
+            if (cStatus) {
+                if (cStatus.status === 'WRITING') {
+                    return `Sta scrivendo...`;
+                } else {
+                    return `Online`;
+                }
+            } else {
+                //Entro qui nel caso incui cStatus sia undefied perchè non esiste nessun cStatus con this.activeContact
+                console.log("ma ci entro qui?");
+                return 'Ultimo messaggio inviato alle ' + this.getLastMexDate(contacts[this.activeContact].messages);
+            }
+
         },
 
         /**
@@ -103,20 +126,12 @@ createApp({
             const messageIndex = this.contacts[this.activeContact].messages.indexOf(message);
             this.contacts[this.activeContact].messages.splice(messageIndex, 1);
         },
-        updateStatus() {
-            //with this if I distinguish whether I'm waiting for a response from the user or not
-            if (this.contacts[this.activeContact].visible == false) {
-                switch (this.activeContactStatus) {
-                    case 'WRITING':
-                        return `Sta scrivendo...`;
-                        break;
-                    case 'ONLINE':
-                        return `Online`;
-                        break;
-                }
-            }
-            return 'Ultimo messaggio inviato alle ' + this.getLastMexDate(contacts[this.activeContact].messages);
+        removeCStatusByIndex(tmpActvContact) {
+            this.contacts_status.splice(this.contacts_status.findIndex(cStatus => cStatus.index === tmpActvContact), 1);
         },
+        getCStatusByIndex(tmpActvContact) {
+            return this.contacts_status.find(cStatus => cStatus.index === tmpActvContact);
+        }
     },
     computed: {
         filteredList() {

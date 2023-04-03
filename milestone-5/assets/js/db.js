@@ -70,5 +70,8 @@ const randomTextMessages = [
   'Me ne assumo la totale responsabilità.'
 ]
 
+let contacts_status = []
+
 export { contacts } // named export
 export { randomTextMessages } // named export
+export { contacts_status } // named export
