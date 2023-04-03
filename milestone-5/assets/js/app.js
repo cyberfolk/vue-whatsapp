@@ -27,18 +27,17 @@ createApp({
             if (len == 0) {
                 return ""
             } else {
-                const message = messages[len - 1].message;
-                if (message.length > 40) {
-                    return `${message.substring(0, 37)}...`;
-                } else {
-                    return message;
-                }
+                return reduceMexSize(messages[len - 1]);
             }
         },
 
         getMexDate(message) {
-            const date = new Date(message.date);
-            return `${date.getHours()}:${date.getMinutes()}`
+            if (message) {
+                const date = new Date(message.date);
+                return `${date.getHours()}:${date.getMinutes()}`
+            } else {
+                return 'tempo fa'
+            }
         },
 
         getLastMexDate(messages) {
@@ -55,24 +54,21 @@ createApp({
         },
 
         sendMessage() {
-            //console.log(this.newMessage);
-            if (this.newMessage.trim() != "") {
-                const newMessageObj = new Message(new Date(), this.newMessage.trim(), 'sent');
-                this.contacts[this.activeContact].messages.push(newMessageObj);
+            const mexTrimmed = this.newMessage.trim()
+            if (mexTrimmed != "") {
+                const newMexObj = new Message(new Date(), mexTrimmed, 'sent');
+                const activeChat = this.contacts[this.activeContact].messages
+                activeChat.push(newMexObj);
                 this.newMessage = "";
+
                 this.waitForAnswer();
             }
         },
 
         waitForAnswer() {
-            const tmpActvContact = this.activeContact;
-            const isConteined = this.statusList.getStatus(tmpActvContact);
-            if (isConteined) {
-                this.statusList.setStatus(tmpActvContact, 'WRITING');
-            } else {
-                this.statusList.addStatus(tmpActvContact)
-            }
-            //console.log(statusList);
+            const tmpActvContact = this.activeContact; // to avoid binding
+            this.statusList.addStatus(tmpActvContact)
+
             this.updateStatus();
 
             // Set timeout before the user replies
@@ -80,29 +76,26 @@ createApp({
                 this.reciveMessage(tmpActvContact);
                 this.statusList.setStatus(tmpActvContact, 'ONLINE');
                 this.updateStatus();
-            }, 5 * 1000);
+            }, 10 * 1000);
 
             // Set timeout before the user leaves the chat
             setTimeout(() => {
                 this.statusList.removeStatus(tmpActvContact);
-                //console.log(statusList);
                 this.updateStatus();
-            }, 10 * 1000);
+            }, 15 * 1000);
         },
 
         updateStatus() {
-            const cStatusActive = this.statusList.getStatus(this.activeContact);
-            //console.log(statusList, cStatus, this.activeContact);
-            if (cStatusActive) {
-                if (cStatusActive.status === 'WRITING') {
+            const activeStatus = this.statusList.getLastStatus(this.activeContact);
+            if (activeStatus) {
+                if (activeStatus.status === 'WRITING') {
                     return `Sta scrivendo...`;
                 } else {
                     return `Online`;
                 }
             } else {
                 //Entro qui nel caso incui cStatus sia undefied perchè non esiste nessun cStatus con this.activeContact
-                console.log("ma ci entro qui?");
-                const activeChat = contacts[this.activeContact].messages;
+                const activeChat = this.contacts[this.activeContact].messages;
                 const lastMexReceived = activeChat.findLast((mex) => mex.status === 'received');
                 return 'Ultimo messaggio inviato alle ' + this.getMexDate(lastMexReceived);
             }
@@ -119,9 +112,11 @@ createApp({
         },
 
         deleteMessage(message) {
-            const messageIndex = this.contacts[this.activeContact].messages.indexOf(message);
-            this.contacts[this.activeContact].messages.splice(messageIndex, 1);
+            const activeChat = this.contacts[this.activeContact].messages;
+            const messageIndex = activeChat.indexOf(message);
+            activeChat.splice(messageIndex, 1);
         },
+
 
     },
     computed: {
@@ -140,4 +135,14 @@ function getRandomTextMessage() {
     const max = randomTextMessages.length;
     const index = Math.floor(Math.random() * max);
     return randomTextMessages[index];
+}
+
+function reduceMexSize(mex) {
+    const MAX_LENGTH = 40;
+    const message = mex.message;
+    if (message.length > MAX_LENGTH) {
+        return `${message.substring(0, MAX_LENGTH - 3)}...`;
+    } else {
+        return message;
+    }
 }

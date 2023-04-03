@@ -13,8 +13,12 @@ export class CStatusList {
     }
 
     setStatus(index, status) {
-        const cStatus = this.list.find(cStatus => cStatus.index === index);
+        const cStatus = this.getStatus(index)
         cStatus.status = status;
+    }
+
+    getLastStatus(index) {
+        return this.list.findLast(cStatus => cStatus.index === index);
     }
 
     getStatus(index) {
