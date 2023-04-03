@@ -8,7 +8,6 @@ const micheleMessages = [
   new Message('10/01/2020 16:15:22', 'Tutto fatto!', 'received'),
 ]
 
-
 const fabioMessages = [
   new Message('20/03/2020 16:30:00', 'Ciao come stai?', 'sent'),
   new Message('20/03/2020 16:30:55', 'Bene grazie! Stasera ci vediamo?', 'received'),
@@ -59,4 +58,17 @@ const contacts = [
   new Contact('Davide', './assets/img/avatar_8.jpg', true, davideMessages),
 ]
 
+const randomTextMessages = [
+  '42.',
+  'Ok!',
+  'Anche secondo me.',
+  'Però dipende.',
+  'Non voglio ne confermare ne smentire quello che stai dicendo.',
+  'Non lo so.',
+  'Non disturbarmi.',
+  'Chiedo e ti dico.',
+  'Me ne assumo la totale responsabilità.'
+]
+
 export { contacts } // named export
+export { randomTextMessages } // named export

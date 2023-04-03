@@ -5,6 +5,7 @@
  * */
 
 import { contacts } from "./db.js"; // import of a default export
+import { randomTextMessages } from "./db.js"; // import of a default export
 import { Contact } from "./Models/Contact.js"; // import of a default export
 import { Message } from "./Models/Message.js"; // import of a default export
 
@@ -65,7 +66,8 @@ createApp({
          * @param {Number} activeContact to avoid errors if activeContact is changed before receiving a new message 
          */
         reciveMessage(activeContact) {
-            const newMessageObj = new Message(new Date(), "ok", 'received');
+            const text = getRandomTextMessage();
+            const newMessageObj = new Message(new Date(), text, 'received');
             this.contacts[activeContact].messages.push(newMessageObj);
         },
 
@@ -86,3 +88,9 @@ createApp({
     },
 }
 ).mount('#app')
+
+function getRandomTextMessage() {
+    const max = randomTextMessages.length;
+    const index = Math.floor(Math.random() * max);
+    return randomTextMessages[index];
+}
