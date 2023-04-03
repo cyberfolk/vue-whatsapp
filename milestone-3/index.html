@@ -98,7 +98,7 @@
                     <div v-if="activeContact > -1" class="input_mex py-2 bg_gray_bar">
                         <div class="d-flex ">
                             <div class="bg_gray_bar px-4 py-2"> <i class="fs-5 fa-regular fa-face-smile text-secondary"></i> </div>
-                            <input class="border-0 rounded-1 w-100 px-3 pt-2 pb-3" type="textarea" placeholder="Scrivi un messaggio">
+                            <input class="border-0 rounded-1 w-100 px-3 pt-2 pb-3" type="textarea" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage()">
                             <div class="bg_gray_bar px-4 py-2"><i class="fs-5 fa-solid fa-microphone text-secondary"></i></div>
                         </div>
                     </div>

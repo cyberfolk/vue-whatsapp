@@ -15,15 +15,16 @@ createApp({
         return {
             activeContact: -1,
             contacts: contacts,
+            newMessage: "",
         }
     },
     methods: {
         getLastMex(messages) {
             const len = messages.length;
             const message = messages[len - 1].message;
-            console.log(message.length);
+            //console.log(message.length);
             if (message.length > 40) {
-                console.log(message.length);
+                //console.log(message.length);
                 return `${message.substring(0, 37)}...`;
             } else {
                 return message;
@@ -39,8 +40,20 @@ createApp({
         },
         getActiveContact(index) {
             this.activeContact = index;
-            console.log(this.activeContact);
-        }
+            //console.log(this.activeContact);
+        },
+        sendMessage() {
+            console.log(this.newMessage);
+            if (this.newMessage != "") {
+                const newMessageObj = new Message(new Date(), this.newMessage, 'sent');
+                this.contacts[this.activeContact].messages.push(newMessageObj);
+                this.newMessage = "";
+            }
+        },
+        reciveMessage(index) {
+            this.activeContact = index;
+            //console.log(this.activeContact);
+        },
     },
     mounted() {
     },
