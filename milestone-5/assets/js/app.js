@@ -6,9 +6,8 @@
 
 import { contacts } from "./db.js"; // import of a default export
 import { randomTextMessages } from "./db.js"; // import of a default export
-import { contacts_status } from "./db.js"; // import of a default export
+import { statusList } from "./db.js"; // import of a default export
 import { Message } from "./Models/Message.js"; // import of a default export
-import { CStatus } from "./Models/CStatus.js"; // import of a default export
 
 const { createApp } = Vue
 
@@ -19,7 +18,7 @@ createApp({
             contacts: contacts,
             newMessage: "",
             searcContact: "",
-            contacts_status: contacts_status,
+            statusList: statusList,
         }
     },
     methods: {
@@ -72,35 +71,35 @@ createApp({
 
         waitForAnswer() {
             const tmpActvContact = this.activeContact;
-            const cStatus = this.getCStatusByIndex(tmpActvContact);
-            if (cStatus) {
-                this.getCStatusByIndex(tmpActvContact).status = 'WRITING';
+            const isConteined = this.statusList.getStatus(tmpActvContact);
+            if (isConteined) {
+                this.statusList.setStatus(tmpActvContact, 'WRITING');
             } else {
-                this.contacts_status.push(new CStatus("WRITING", tmpActvContact))
+                this.statusList.addStatus(tmpActvContact)
             }
-            //console.log(contacts_status);
+            //console.log(statusList);
             this.updateStatus();
 
             // Set timeout before the user replies
             setTimeout(() => {
                 this.reciveMessage(tmpActvContact);
-                this.getCStatusByIndex(tmpActvContact).status = 'ONLINE';
+                this.statusList.setStatus(tmpActvContact, 'ONLINE');
                 this.updateStatus();
             }, 5 * 1000);
 
             // Set timeout before the user leaves the chat
             setTimeout(() => {
-                this.removeCStatusByIndex(tmpActvContact);
-                //console.log(contacts_status);
+                this.statusList.removeStatus(tmpActvContact);
+                //console.log(statusList);
                 this.updateStatus();
             }, 10 * 1000);
         },
 
         updateStatus() {
-            const cStatus = this.contacts_status.find(cStatus => cStatus.index === this.activeContact)
-            //console.log(contacts_status, cStatus, this.activeContact);
-            if (cStatus) {
-                if (cStatus.status === 'WRITING') {
+            const cStatusActive = this.statusList.getStatus(this.activeContact);
+            //console.log(statusList, cStatus, this.activeContact);
+            if (cStatusActive) {
+                if (cStatusActive.status === 'WRITING') {
                     return `Sta scrivendo...`;
                 } else {
                     return `Online`;
@@ -126,12 +125,7 @@ createApp({
             const messageIndex = this.contacts[this.activeContact].messages.indexOf(message);
             this.contacts[this.activeContact].messages.splice(messageIndex, 1);
         },
-        removeCStatusByIndex(tmpActvContact) {
-            this.contacts_status.splice(this.contacts_status.findIndex(cStatus => cStatus.index === tmpActvContact), 1);
-        },
-        getCStatusByIndex(tmpActvContact) {
-            return this.contacts_status.find(cStatus => cStatus.index === tmpActvContact);
-        }
+
     },
     computed: {
         filteredList() {

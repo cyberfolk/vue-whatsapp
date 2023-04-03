@@ -1,6 +1,6 @@
 import { Contact } from "./Models/Contact.js"; // import of a default export
 import { Message } from "./Models/Message.js"; // import of a default export
-
+import { CStatusList } from "./Models/CStatusList.js"; // import of a default export
 
 const micheleMessages = [
   new Message('10/01/2020 15:30:55', 'Hai portato a spasso il cane?', 'sent'),
@@ -70,8 +70,8 @@ const randomTextMessages = [
   'Me ne assumo la totale responsabilità.'
 ]
 
-let contacts_status = []
+const statusList = new CStatusList();
 
 export { contacts } // named export
 export { randomTextMessages } // named export
-export { contacts_status } // named export
+export { statusList } // named export
