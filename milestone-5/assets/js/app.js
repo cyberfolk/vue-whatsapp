@@ -16,6 +16,7 @@ createApp({
             activeContact: -1,
             contacts: contacts,
             newMessage: "",
+            searcContact: "",
         }
     },
     methods: {
@@ -64,6 +65,14 @@ createApp({
             const newMessageObj = new Message(new Date(), "ok", 'received');
             this.contacts[activeContact].messages.push(newMessageObj);
         },
+
+    },
+    computed: {
+        filteredList() {
+            return this.contacts.filter(contact => {
+                return contact.name.toLowerCase().includes(this.searcContact.toLowerCase())
+            })
+        }
     },
     mounted() {
     },
