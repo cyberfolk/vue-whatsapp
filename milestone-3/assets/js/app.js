@@ -48,6 +48,8 @@ createApp({
                 const newMessageObj = new Message(new Date(), this.newMessage, 'sent');
                 this.contacts[this.activeContact].messages.push(newMessageObj);
                 this.newMessage = "";
+
+                //passage to value to avoid binding
                 const tmp = this.activeContact
                 setTimeout(() => {
                     this.reciveMessage(tmp)
