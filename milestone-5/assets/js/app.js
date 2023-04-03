@@ -106,9 +106,6 @@ createApp({
 
         },
 
-        /**
-         * @param {Number} activeContact to avoid errors if activeContact is changed before receiving a new message 
-         */
         reciveMessage(activeContact) {
             const text = getRandomTextMessage();
             const newMessageObj = new Message(new Date(), text, 'received');
