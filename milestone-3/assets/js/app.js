@@ -48,11 +48,18 @@ createApp({
                 const newMessageObj = new Message(new Date(), this.newMessage, 'sent');
                 this.contacts[this.activeContact].messages.push(newMessageObj);
                 this.newMessage = "";
+                setTimeout(() => {
+                    this.reciveMessage(this.activeContact)
+                }, 2 * 1000);
             }
         },
-        reciveMessage(index) {
-            this.activeContact = index;
-            //console.log(this.activeContact);
+
+        /**
+         * @param {Number} activeContact to avoid errors if activeContact is changed before receiving a new message 
+         */
+        reciveMessage(activeContact) {
+            const newMessageObj = new Message(new Date(), "ok", 'received');
+            this.contacts[activeContact].messages.push(newMessageObj);
         },
     },
     mounted() {
