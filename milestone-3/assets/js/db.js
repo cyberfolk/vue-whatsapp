@@ -1,5 +1,5 @@
-import { Contact } from "./Models/Task.js"; // import of a default export
-import { Message } from "./Models/Task.js"; // import of a default export
+import { Contact } from "./Models/Contact.js"; // import of a default export
+import { Message } from "./Models/Message.js"; // import of a default export
 
 
 const micheleMessages = [
