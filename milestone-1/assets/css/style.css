@@ -33,6 +33,7 @@ body {
 
 .contact_active {
     width: calc(100% - var(--bz-my_contact_w));
+    background-image: url(../img/mine.jpg);
 }
 
 .my_contact header {
@@ -56,10 +57,6 @@ body {
     height: 4rem;
 }
 
-.contact_active {
-    background-image: url(../img/mine.jpg);
-    height: 100%;
-}
 
 .contact_active header {
     height: var(--bz-header_contact_active_h);
