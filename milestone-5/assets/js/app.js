@@ -102,7 +102,9 @@ createApp({
             } else {
                 //Entro qui nel caso incui cStatus sia undefied perchè non esiste nessun cStatus con this.activeContact
                 console.log("ma ci entro qui?");
-                return 'Ultimo messaggio inviato alle ' + this.getLastMexDate(contacts[this.activeContact].messages);
+                const activeChat = contacts[this.activeContact].messages;
+                const lastMexReceived = activeChat.findLast((mex) => mex.status === 'received');
+                return 'Ultimo messaggio inviato alle ' + this.getMexDate(lastMexReceived);
             }
 
         },
