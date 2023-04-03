@@ -1,0 +1,154 @@
+:root {
+    --bz-header_my_contact_h: 4rem;
+    --bz-header_contact_active_h: 4rem;
+    --bz-banner_notify_h: 5rem;
+    --bz-searchbar_chat_h: 3.2rem;
+    --bz-input_mex_h: 4rem;
+    --bz-py-body: 2rem;
+    --bz-my_contact_w: 22rem;
+    --bg-gray_bg: #dadbd3;
+    --bg-gray_header: #eaeaea;
+    --bg-gray_bar: #f3eeea;
+    --bg-gray_icon: #b1b1b1;
+    --bg-blue_banner: #8EDAFC;
+    --bg-gray_active: #e9ebeb;
+}
+
+/* #region    app-web ....................... */
+body {
+    overflow: hidden;
+    background: linear-gradient(#009688 0%, #009688 15%, var(--bg-gray_bg) 15%, var(--bg-gray_bg) 100%);
+    padding: var(--bz-py-body) 0;
+}
+
+.boolzap_window {
+    height: calc(100vh - 2* var(--bz-py-body));
+    overflow: hidden;
+}
+
+.my_contact {
+    width: var(--bz-my_contact_w);
+    flex-shrink: 0;
+}
+
+.contact_active {
+    width: calc(100% - var(--bz-my_contact_w));
+    background-image: url(../img/mine.jpg);
+}
+
+.my_contact header {
+    height: var(--bz-header_my_contact_h);
+}
+
+.my_contact .banner_notify {
+    height: var(--bz-banner_notify_h);
+}
+
+.my_contact .searchbar_chat {
+    height: var(--bz-searchbar_chat_h);
+}
+
+.my_contact .chat_list {
+    height: calc(100vh - var(--bz-header_my_contact_h) - var(--bz-banner_notify_h) - var(--bz-banner_notify_h) - var(--bz-py-body));
+    overflow-y: auto;
+}
+
+.chat_list .contact_chat {
+    height: 4rem;
+}
+
+
+.contact_active header {
+    height: var(--bz-header_contact_active_h);
+}
+
+.contact_active .chat {
+    height: calc(100vh - var(--bz-header_contact_active_h) - var(--bz-input_mex_h) - 2* var(--bz-py-body));
+    overflow-y: auto;
+}
+
+.contact_active .input_mex {
+    height: var(--bz-input_mex_h);
+}
+
+/* #endregion app-web ....................... */
+/* #egion     mex ........................... */
+.chat .mex {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+    width: 40%;
+}
+
+.chat .mex_my {
+    align-self: end;
+    background: #d5f9ba;
+}
+
+.chat .mex_contact {
+    background: rgb(255, 255, 255);
+}
+
+/* #endegion  mex ........................... */
+/* #egion     utility ....................... */
+.centre_fix {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.bg_gray_header {
+    background-color: var(--bg-gray_header);
+}
+
+.bg_gray_bar {
+    background-color: var(--bg-gray_bar);
+}
+
+.circle_photo {
+    /* adv: the target gets the size of the parent */
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.contact_name {
+    font-weight: bold;
+}
+
+.bg_blue {
+    background-color: var(--bg-blue_banner);
+}
+
+.text_blue {
+    color: var(--bg-blue_banner);
+}
+
+i {
+    color: var(--bg-gray_icon);
+}
+
+.header_my_contact i {
+    font-size: 1.5rem;
+}
+
+.fs_7 {
+    font-size: 0.8rem;
+    margin-top: -0.2rem;
+    color: var(--bg-gray_icon);
+}
+
+.time {
+    font-size: 0.8rem;
+    color: var(--bg-gray_icon);
+}
+
+.active {
+    background-color: var(--bg-gray_active);
+}
+
+/* #endregion utility ....................... */

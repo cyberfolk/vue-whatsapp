@@ -1,0 +1,39 @@
+/* Il background-color lo metto in style.css */
+.debug * {
+    border: 1px dashed red;
+}
+
+.debug .container {
+    background-color: green;
+}
+
+.debug .row {
+    background-color: yellow;
+}
+
+.debug [class^="col-"] {
+    background-color: aqua;
+}
+
+/* .debug div {
+    background-color: rgb(255, 136, 0);
+} */
+
+/* #region common ...........................*/
+.debug header {
+    padding: 1rem;
+}
+
+.debug main {
+    padding: 1rem;
+}
+
+.debug section {
+    padding: 1rem;
+}
+
+.debug footer {
+    padding: 1rem;
+}
+
+/* #endregion common ....................... */
