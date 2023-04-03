@@ -18,7 +18,13 @@ export class CStatusList {
     }
 
     getLastStatus(index) {
-        return this.list.findLast(cStatus => cStatus.index === index);
+        const cStatus = this.list.findLast(cStatus => cStatus.index === index);
+        if (cStatus) {
+            return cStatus.status
+        } else {
+            //Entro qui nel caso incui cStatus sia undefied perchè non esiste nessun cStatus con this.activeContact
+            return "NOT-ONLINE"
+        }
     }
 
     getStatus(index) {

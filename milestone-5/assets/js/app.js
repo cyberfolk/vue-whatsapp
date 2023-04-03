@@ -91,17 +91,17 @@ createApp({
 
         updateStatus() {
             const activeStatus = this.statusList.getLastStatus(this.activeContact);
-            if (activeStatus) {
-                if (activeStatus.status === 'WRITING') {
+            switch (activeStatus) {
+                case 'WRITING':
                     return `Sta scrivendo...`;
-                } else {
+                    break;
+                case 'ONLINE':
                     return `Online`;
-                }
-            } else {
-                //Entro qui nel caso incui cStatus sia undefied perchè non esiste nessun cStatus con this.activeContact
-                const activeChat = this.contacts[this.activeContact].messages;
-                const lastMexReceived = activeChat.findLast((mex) => mex.status === 'received');
-                return 'Ultimo messaggio inviato alle ' + this.getMexDate(lastMexReceived);
+                    break;
+                default:
+                    const activeChat = this.contacts[this.activeContact].messages;
+                    const lastMexReceived = activeChat.findLast((mex) => mex.status === 'received');
+                    return 'Ultimo messaggio inviato alle ' + this.getMexDate(lastMexReceived);
             }
 
         },
