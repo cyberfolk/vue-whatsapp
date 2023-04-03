@@ -90,7 +90,7 @@
                             <div v-for="message in contacts[activeContact].messages" class="mex" :class="message.status === 'sent' ? 'mex_my' : 'mex_contact'">
                                 <div data-bs-toggle="dropdown">
                                     <div class="message"> {{message.message}} </div>
-                                    <div class="time fs_7 text-end">12:34</div>
+                                    <div class="time fs_7 text-end">{{getMexDate(message)}}</div>
                                 </div>
                                 <ul class="dropdown-menu dropdown-menu-end shadow border-0">
                                     <li><a class="dropdown-item" href="#" @click="deleteMessage(message)">Delete Message</a></li>

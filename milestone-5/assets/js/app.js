@@ -35,23 +35,18 @@ createApp({
                 }
             }
         },
+
+        getMexDate(message) {
+            const date = new Date(message.date);
+            return `${date.getHours()}:${date.getMinutes()}`
+        },
+
         getLastMexDate(messages) {
             const len = messages.length;
             if (len == 0) {
-                return ""
+                return "";
             } else {
-                const date = new Date(messages[len - 1].date);
-                return `${date.getHours()}:${date.getMinutes()}`
-            }
-        },
-
-        setLatMexDate(messages) {
-            const len = messages.length;
-            if (len == 0) {
-                lastMexDateActive = ""
-            } else {
-                const date = new Date(messages[len - 1].date);
-                lastMexDateActive = `${date.getHours()}:${date.getMinutes()}`
+                return this.getMexDate(messages[len - 1])
             }
         },
 
