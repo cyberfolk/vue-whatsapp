@@ -47,9 +47,9 @@ createApp({
             //console.log(this.activeContact);
         },
         sendMessage() {
-            //console.log(this.newMessage);
-            if (this.newMessage.trim() != "") {
-                const newMessageObj = new Message(new Date(), this.newMessage.trim(), 'sent');
+            console.log(this.newMessage);
+            if (this.newMessage != "") {
+                const newMessageObj = new Message(new Date(), this.newMessage, 'sent');
                 this.contacts[this.activeContact].messages.push(newMessageObj);
                 this.newMessage = "";
 
