@@ -17,7 +17,6 @@ createApp({
             contacts: contacts,
             newMessage: "",
             searcContact: "",
-            showedList: contacts,
         }
     },
     methods: {
@@ -67,16 +66,13 @@ createApp({
             this.contacts[activeContact].messages.push(newMessageObj);
         },
 
-        searchList() {
-            if (this.searcContact != "") {
-                console.log(this.searcContact);
-                this.showedList = this.contacts.filter(contact => contact.name.includes(this.searcContact));
-                console.log(this.showedList);
-            } else {
-                this.showedList = this.contacts
-            }
-        },
-
+    },
+    computed: {
+        filteredList() {
+            return this.contacts.filter(contact => {
+                return contact.name.toLowerCase().includes(this.searcContact.toLowerCase())
+            })
+        }
     },
     mounted() {
     },
