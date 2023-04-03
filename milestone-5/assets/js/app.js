@@ -18,7 +18,7 @@ createApp({
             contacts: contacts,
             newMessage: "",
             searcContact: "",
-            status: "NOT-ONLINE",
+            activeContactStatus: "",
         }
     },
     methods: {
@@ -54,37 +54,39 @@ createApp({
                 lastMexDateActive = `${date.getHours()}:${date.getMinutes()}`
             }
         },
+
         getActiveContact(index) {
             this.activeContact = index;
-            //console.log(this.activeContact);
         },
+
         sendMessage() {
             //console.log(this.newMessage);
             if (this.newMessage.trim() != "") {
                 const newMessageObj = new Message(new Date(), this.newMessage.trim(), 'sent');
                 this.contacts[this.activeContact].messages.push(newMessageObj);
                 this.newMessage = "";
-
                 this.waitForAnswer();
             }
         },
 
         waitForAnswer() {
-            this.status = 'WRITING';
+            this.contacts[this.activeContact].visible = false; // flag wichtells me that I'm waiting for an answer from that specific user 
+            this.activeContactStatus = 'WRITING';
             this.updateStatus();
             const tmpActvContact = this.activeContact //passage to value to avoid binding
 
             // Set timeout before the user replies
             setTimeout(() => {
                 this.reciveMessage(tmpActvContact);
-                this.status = 'ONLINE';
+                this.activeContactStatus = 'ONLINE';
                 this.updateStatus();
             }, 2 * 1000);
 
             // Set timeout before the user leaves the chat
             setTimeout(() => {
-                this.status = 'NOT-ONLINE';
+                this.activeContactStatus = 'NOT-ONLINE';
                 this.updateStatus();
+                this.contacts[this.activeContact].visible = true;
             }, 5 * 1000);
         },
 
@@ -102,19 +104,18 @@ createApp({
             this.contacts[this.activeContact].messages.splice(messageIndex, 1);
         },
         updateStatus() {
-            switch (this.status) {
-                case 'NOT-ONLINE':
-                    return 'Ultimo messaggio inviato alle ' + this.getLastMexDate(contacts[this.activeContact].messages);
-                    break;
-                case 'WRITING':
-                    return `Sta scrivendo...`;
-                    break;
-                case 'ONLINE':
-                    return `Online`;
-                    break;
-                default:
-                    return `ERROR`;
+            //with this if I distinguish whether I'm waiting for a response from the user or not
+            if (this.contacts[this.activeContact].visible == false) {
+                switch (this.activeContactStatus) {
+                    case 'WRITING':
+                        return `Sta scrivendo...`;
+                        break;
+                    case 'ONLINE':
+                        return `Online`;
+                        break;
+                }
             }
+            return 'Ultimo messaggio inviato alle ' + this.getLastMexDate(contacts[this.activeContact].messages);
         },
     },
     computed: {
