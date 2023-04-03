@@ -18,6 +18,7 @@ createApp({
             contacts: contacts,
             newMessage: "",
             searcContact: "",
+            status: "NOT-ONLINE",
         }
     },
     methods: {
@@ -43,6 +44,16 @@ createApp({
                 return `${date.getHours()}:${date.getMinutes()}`
             }
         },
+
+        setLatMexDate(messages) {
+            const len = messages.length;
+            if (len == 0) {
+                lastMexDateActive = ""
+            } else {
+                const date = new Date(messages[len - 1].date);
+                lastMexDateActive = `${date.getHours()}:${date.getMinutes()}`
+            }
+        },
         getActiveContact(index) {
             this.activeContact = index;
             //console.log(this.activeContact);
@@ -54,12 +65,27 @@ createApp({
                 this.contacts[this.activeContact].messages.push(newMessageObj);
                 this.newMessage = "";
 
-                //passage to value to avoid binding
-                const tmp = this.activeContact
-                setTimeout(() => {
-                    this.reciveMessage(tmp)
-                }, 2 * 1000);
+                this.waitForAnswer();
             }
+        },
+
+        waitForAnswer() {
+            this.status = 'WRITING';
+            this.updateStatus();
+            const tmpActvContact = this.activeContact //passage to value to avoid binding
+
+            // Set timeout before the user replies
+            setTimeout(() => {
+                this.reciveMessage(tmpActvContact);
+                this.status = 'ONLINE';
+                this.updateStatus();
+            }, 2 * 1000);
+
+            // Set timeout before the user leaves the chat
+            setTimeout(() => {
+                this.status = 'NOT-ONLINE';
+                this.updateStatus();
+            }, 5 * 1000);
         },
 
         /**
@@ -74,8 +100,22 @@ createApp({
         deleteMessage(message) {
             const messageIndex = this.contacts[this.activeContact].messages.indexOf(message);
             this.contacts[this.activeContact].messages.splice(messageIndex, 1);
-        }
-
+        },
+        updateStatus() {
+            switch (this.status) {
+                case 'NOT-ONLINE':
+                    return 'Ultimo messaggio inviato alle ' + this.getLastMexDate(contacts[this.activeContact].messages);
+                    break;
+                case 'WRITING':
+                    return `Sta scrivendo...`;
+                    break;
+                case 'ONLINE':
+                    return `Online`;
+                    break;
+                default:
+                    return `ERROR`;
+            }
+        },
     },
     computed: {
         filteredList() {

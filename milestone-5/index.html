@@ -75,7 +75,7 @@
                         <img class="circle_photo" :src="contacts[activeContact].avatar" alt="">
                         <div class="flex-grow-1 ps-3">
                             <div class="contact_name">{{contacts[activeContact].name}}</div>
-                            <div class="fs-7 last_mex fs_7">Ultimo messaggio inviato alle {{getLastMexDate(contacts[activeContact].messages)}}</div>
+                            <div class="fs-7 last_mex fs_7">{{updateStatus()}}</div>
                         </div>
                         <div class="icons d-flex gap-3 pe-3">
                             <i class="fa fa-search "></i>
