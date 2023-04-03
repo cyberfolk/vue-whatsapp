@@ -4,10 +4,10 @@
  * Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto 
  * */
 
-import { contacts } from "./db.js"; // import of a default export
-import { randomTextMessages } from "./db.js"; // import of a default export
-import { statusList } from "./db.js"; // import of a default export
-import { Message } from "./Models/Message.js"; // import of a default export
+import { contacts } from "./db.js";
+import { randomTextMessages } from "./db.js";
+import { statusList } from "./db.js";
+import { Message } from "./Models/Message.js";
 
 const { createApp } = Vue
 
@@ -70,17 +70,21 @@ createApp({
             this.statusList.addStatus(tmpActvContact)
 
             this.updateStatus();
+            this.waitReplies(tmpActvContact);     // Set timeout before the user replies
+            this.waitLeavesChat(tmpActvContact);  // Set timeout before the user leaves the chat
+        },
 
-            // Set timeout before the user replies
+        waitReplies(actvContact) {
             setTimeout(() => {
-                this.reciveMessage(tmpActvContact);
-                this.statusList.setStatus(tmpActvContact, 'ONLINE');
+                this.reciveMessage(actvContact);
+                this.statusList.setStatus(actvContact, 'ONLINE');
                 this.updateStatus();
             }, 10 * 1000);
+        },
 
-            // Set timeout before the user leaves the chat
+        waitLeavesChat(actvContact) {
             setTimeout(() => {
-                this.statusList.removeStatus(tmpActvContact);
+                this.statusList.removeStatus(actvContact);
                 this.updateStatus();
             }, 15 * 1000);
         },
