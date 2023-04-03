@@ -44,15 +44,15 @@
 
                     <div class="searchbar_chat bg-white p-2">
                         <div class="d-flex border border-1 p-1">
-                            <div class="bg-white px-4 "><i class="fa-solid fa-magnifying-glass"></i></div>
-                            <input class="border-0 w-100 " type="search" placeholder="Cerca o inizia una nuova chat">
+                            <div class="bg-white px-4" @click="includeContact()"><i class="fa-solid fa-magnifying-glass"></i></div>
+                            <input class="border-0 w-100 " type="search" placeholder="Cerca o inizia una nuova chat" v-model="searcContact" @keyup.enter="searchList()">
                         </div>
                     </div>
                     <!-- ./searchbar_chat -->
 
                     <div class="chat_list bg-white">
                         <ul class="list-unstyled">
-                            <li v-for="(contact, index) in contacts" class="border-bottom ps-3" :class="index === activeContact ? 'active' : ''">
+                            <li v-for="(contact, index) in showedList" class="border-bottom ps-3" :class="index === activeContact ? 'active' : ''">
                                 <div @click="getActiveContact(index)" class="contact_chat d-flex p-2 ps-1">
                                     <img class=" circle_photo" :src="contact.avatar" alt="">
                                     <div class="ps-3 flex-grow-1">

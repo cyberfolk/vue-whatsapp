@@ -16,6 +16,8 @@ createApp({
             activeContact: -1,
             contacts: contacts,
             newMessage: "",
+            searcContact: "",
+            showedList: contacts,
         }
     },
     methods: {
@@ -64,6 +66,17 @@ createApp({
             const newMessageObj = new Message(new Date(), "ok", 'received');
             this.contacts[activeContact].messages.push(newMessageObj);
         },
+
+        searchList() {
+            if (this.searcContact != "") {
+                console.log(this.searcContact);
+                this.showedList = this.contacts.filter(contact => contact.name.includes(this.searcContact));
+                console.log(this.showedList);
+            } else {
+                this.showedList = this.contacts
+            }
+        },
+
     },
     mounted() {
     },
