@@ -66,6 +66,11 @@ createApp({
             this.contacts[activeContact].messages.push(newMessageObj);
         },
 
+        deleteMessage(message) {
+            const messageIndex = this.contacts[this.activeContact].messages.indexOf(message);
+            this.contacts[this.activeContact].messages.splice(messageIndex, 1);
+        }
+
     },
     computed: {
         filteredList() {
