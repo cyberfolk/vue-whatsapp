@@ -36,12 +36,15 @@
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Aggiungi un nuovo contatto</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" @click="resetNewContact()"></button>
                                         </div>
-                                        <div class="modal-body">
-                                            <input class="border-0 rounded-1 w-100 py-2 px-3 mb-1" type="text" placeholder="Inserisci nome del nuovo contatto" v-model="newContactName">
-                                            <input class="border-0 rounded-1 w-100 py-2 px-3" type="text" placeholder="Inserisci link all'immagine profilo" v-model="newContactImg">
+                                        <div class="modal-body px-4">
+                                            <input class="border-1 rounded-1 w-100 py-2 px-3 mt-3 mb-2" type="text" placeholder="Inserisci nome del nuovo contatto" v-model="newContactName">
+                                            <input class="border-1 rounded-1 w-100 py-2 px-3 mt-2 mb-3" type="text" placeholder="Inserisci link all'immagine profilo" v-model="newContactImg">
+                                            <div class="alert alert-danger" role="alert" v-if="newContactError">
+                                                <strong>{{newContactError}}</strong>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="addNewUser()">Add new contact</button>
+                                            <button type="button" class="btn btn-primary" @click="addNewUser()">Add new contact</button>
                                         </div>
                                     </div>
                                 </div>

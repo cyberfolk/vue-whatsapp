@@ -22,6 +22,7 @@ createApp({
             newContactImg: "",
             searcContact: "",
             statusList: statusList,
+            newContactError: ""
 
         }
     },
@@ -141,9 +142,11 @@ createApp({
                 const newContact = new Contact(this.newContactName, this.newContactImg, true, newChat);
                 this.contacts.push(newContact);
                 this.resetNewContact()
+                this.newContactError = "";
             };
 
             img.onerror = () => {
+                this.newContactError = "Percorso dell'immagine non valido";
                 this.resetNewContact()
             };
         },

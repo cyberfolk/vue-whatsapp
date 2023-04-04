@@ -114,6 +114,7 @@ body {
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
+    object-fit: cover;
 }
 
 .contact_name {
