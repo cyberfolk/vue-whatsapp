@@ -135,18 +135,21 @@ createApp({
 
             img.onload = () => {
                 const newChat = [];
-                console.log(this.newContactImg);
                 const newContact = new Contact(this.newContactName, this.newContactImg, true, newChat);
                 this.contacts.push(newContact);
-                this.newContactName = "";
-                this.newContactImg = "";
+                this.resetNewContact()
             };
 
             img.onerror = () => {
-                alert("Path dell'immagine non valido")
+                this.resetNewContact()
             };
         },
+        resetNewContact() {
+            this.newContactName = "";
+            this.newContactImg = "";
+        }
     },
+
 
     computed: {
         filteredList() {

@@ -24,31 +24,31 @@
                             <img class="circle_photo" src="./assets/img/avatar_io.jpg" alt="">
                             <span class="contact_name">Sofia</span>
                         </div>
-                        <div class="d-flex gap-3 pe-3">
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-message" data-bs-toggle="modal" data-bs-target="#add_new_contact"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <div class="actions d-flex gap-2 pe-3">
+                            <button class="bg-transparent border-0"><i class="fa-solid fa-circle-notch"></i></button>
+                            <button class="bg-transparent border-0"><i class="fa-solid fa-message" data-bs-toggle="modal" data-bs-target="#add_new_contact"></i></button>
+                            <button class="bg-transparent border-0"><i class="fa-solid fa-ellipsis-vertical"></i></button>
 
                             <div class="modal fade" id="add_new_contact" tabindex="-1">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Aggiungi un nuovo contatto</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" @click="resetNewContact()"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <input class="border-0 rounded-1 w-100 py-2 px-3 mb-1" type="text" placeholder="Inserisci il nome del nuovo contatto" v-model="newContactName">
-                                            <input class="border-0 rounded-1 w-100 py-2 px-3" type="text" placeholder="Inserisci il link all'immagine del nuovo contatto" v-model="newContactImg">
+                                            <input class="border-0 rounded-1 w-100 py-2 px-3 mb-1" type="text" placeholder="Inserisci nome del nuovo contatto" v-model="newContactName">
+                                            <input class="border-0 rounded-1 w-100 py-2 px-3" type="text" placeholder="Inserisci link all'immagine profilo" v-model="newContactImg">
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" @click="addNewUser()">Add</button>
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="addNewUser()">Add new contact</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /Modal -->
+                            <!-- ./Modal -->
                         </div>
+                        <!-- ./actions -->
                     </header>
 
                     <div class="banner_notify d-flex bg_blue p-3 ps-3">
@@ -97,15 +97,17 @@
                             <div class="contact_name">{{contacts[activeContact].name}}</div>
                             <div class="fs-7 last_mex fs_7">{{updateStatus()}}</div>
                         </div>
-                        <div class="icons d-flex">
-                            <i class="fa fa-search p-2"></i>
-                            <i class="fa-solid fa-paperclip p-2"></i>
-                            <i class="fa-solid fa-ellipsis-vertical py-2 px-3" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                                <li><a class="dropdown-item" href="#" @click="deleteAllMessage(contacts[activeContact])">Delete all Message</a></li>
-                                <li><a class="dropdown-item" href="#" @click="deleteChat(activeContact)">Delete chat</a></li>
-                            </ul>
+                        <div class="actions d-flex gap-2 pe-3">
+                            <button class="bg-transparent border-0"><i class="fa fa-search"></i></button>
+                            <button class="bg-transparent border-0"><i class="fa-solid fa-paperclip"></i></button>
+                            <button class="bg-transparent border-0"><i class="fa-solid fa-ellipsis-vertical" data-bs-toggle="dropdown"></i>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                                    <li><a class="dropdown-item" href="#" @click="deleteAllMessage(contacts[activeContact])">Delete all Message</a></li>
+                                    <li><a class="dropdown-item" href="#" @click="deleteChat(activeContact)">Delete chat</a></li>
+                                </ul>
+                            </button>
                         </div>
+                        <!-- /.actions  -->
                     </header>
                     <!-- /.contact_active header  -->
 
