@@ -56,9 +56,9 @@ createApp({
         sendMessage() {
             const mexTrimmed = this.newMessage.trim()
             if (mexTrimmed != "") {
-                const newMexObj = new Message(new Date(), mexTrimmed, 'sent');
+                const mexObj = new Message(new Date(), mexTrimmed, 'sent');
                 const activeChat = this.contacts[this.activeContact].messages
-                activeChat.push(newMexObj);
+                activeChat.push(mexObj);
                 this.newMessage = "";
 
                 this.waitForAnswer();
@@ -103,7 +103,6 @@ createApp({
                     const lastMexReceived = activeChat.findLast((mex) => mex.status === 'received');
                     return 'Ultimo messaggio inviato alle ' + this.getMexDate(lastMexReceived);
             }
-
         },
 
         reciveMessage(activeContact) {
@@ -118,8 +117,8 @@ createApp({
             activeChat.splice(messageIndex, 1);
         },
 
-
     },
+
     computed: {
         filteredList() {
             return this.contacts.filter(contact => {
@@ -127,6 +126,7 @@ createApp({
             })
         }
     },
+
     mounted() {
     },
 }
