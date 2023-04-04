@@ -130,34 +130,22 @@ createApp({
         },
 
         addNewUser() {
-            const newChat = [];
-            const newContact = new Contact(this.newContactName, this.newContactImg, true, newChat);
-            this.contacts.push(newContact);
-
-
-
-            this.newContactName = "";
-            this.newContactImg = "";
-        },
-
-        checkIfImageExists(url, callback) {
             const img = new Image();
-            img.src = url;
+            img.src = this.newContactImg;
 
-            if (img.complete) {
-                callback(true);
-                console.log("qui");
-            } else {
-                img.onload = () => {
-                    callback(true);
-                };
+            img.onload = () => {
+                const newChat = [];
+                console.log(this.newContactImg);
+                const newContact = new Contact(this.newContactName, this.newContactImg, true, newChat);
+                this.contacts.push(newContact);
+                this.newContactName = "";
+                this.newContactImg = "";
+            };
 
-                img.onerror = () => {
-                    callback(false);
-                };
-            }
-        }
-
+            img.onerror = () => {
+                alert("Path dell'immagine non valido")
+            };
+        },
     },
 
     computed: {
