@@ -8,6 +8,7 @@ import { contacts } from "./db.js";
 import { randomTextMessages } from "./db.js";
 import { statusList } from "./db.js";
 import { Message } from "./Models/Message.js";
+import { Contact } from "./Models/Contact.js";
 
 const { createApp } = Vue
 
@@ -17,6 +18,8 @@ createApp({
             activeContact: -1,
             contacts: contacts,
             newMessage: "",
+            newContactName: "",
+            newContactImg: "",
             searcContact: "",
             statusList: statusList,
         }
@@ -125,6 +128,35 @@ createApp({
             this.contacts.splice(index, 1);
             this.activeContact = -1;
         },
+
+        addNewUser() {
+            const newChat = [];
+            const newContact = new Contact(this.newContactName, this.newContactImg, true, newChat);
+            this.contacts.push(newContact);
+
+
+
+            this.newContactName = "";
+            this.newContactImg = "";
+        },
+
+        checkIfImageExists(url, callback) {
+            const img = new Image();
+            img.src = url;
+
+            if (img.complete) {
+                callback(true);
+                console.log("qui");
+            } else {
+                img.onload = () => {
+                    callback(true);
+                };
+
+                img.onerror = () => {
+                    callback(false);
+                };
+            }
+        }
 
     },
 
