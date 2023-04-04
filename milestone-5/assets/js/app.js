@@ -37,8 +37,8 @@ createApp({
 
         getMexDate(message) {
             if (message) {
-                const date = new Date(message.date);
-                return `${date.getHours()}:${date.getMinutes()}`
+                const date = luxon.DateTime.fromFormat(message.date, "dd/MM/yyyy HH:mm:ss") //Read and store data
+                return date.toLocaleString(luxon.DateTime.TIME_SIMPLE); //Convert data
             } else {
                 return 'tempo fa'
             }
@@ -60,7 +60,8 @@ createApp({
         sendMessage() {
             const mexTrimmed = this.newMessage.trim()
             if (mexTrimmed != "") {
-                const mexObj = new Message(new Date(), mexTrimmed, 'sent');
+                const dateNow = luxon.DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss")
+                const mexObj = new Message(dateNow, mexTrimmed, 'sent');
                 const activeChat = this.contacts[this.activeContact].messages
                 activeChat.push(mexObj);
                 this.newMessage = "";
@@ -111,7 +112,8 @@ createApp({
 
         reciveMessage(activeContact) {
             const text = getRandomTextMessage();
-            const newMessageObj = new Message(new Date(), text, 'received');
+            const dateNow = luxon.DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss")
+            const newMessageObj = new Message(dateNow, text, 'received');
             this.contacts[activeContact].messages.push(newMessageObj);
         },
 
