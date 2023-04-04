@@ -25,7 +25,6 @@ createApp({
             statusList: statusList,
             newContactError: "",
             showEmoji: false,
-
         }
     },
     methods: {
