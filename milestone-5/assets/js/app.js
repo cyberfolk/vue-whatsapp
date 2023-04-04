@@ -62,7 +62,6 @@ createApp({
             if (mexTrimmed != "") {
                 const mexObj = new Message(new Date(), mexTrimmed, 'sent');
                 const activeChat = this.contacts[this.activeContact].messages
-                this.$refs['bottom'].scrollIntoView({ behavior: "smooth" })
                 activeChat.push(mexObj);
                 this.newMessage = "";
 
@@ -114,7 +113,6 @@ createApp({
             const text = getRandomTextMessage();
             const newMessageObj = new Message(new Date(), text, 'received');
             this.contacts[activeContact].messages.push(newMessageObj);
-            scrollIntoView()
         },
 
         deleteMessage(message) {
@@ -151,9 +149,10 @@ createApp({
             this.newContactName = "";
             this.newContactImg = "";
         },
-        scrollToEnd() {
-            // scroll to the start of the last message
-            this.$el.scrollTop = this.$el.lastElementChild.offsetTop;
+
+        scrollDownChat() {
+            const el_chat = document.querySelector(".chat");
+            el_chat.scrollTo(0, el_chat.scrollHeight);
         }
     },
 
@@ -171,7 +170,7 @@ createApp({
 
     updated() {
         // whenever data changes and the component re-renders, this is called.
-        this.$nextTick(() => this.scrollToEnd());
+        this.$nextTick(() => this.scrollDownChat());
     },
 }
 ).mount('#app')
