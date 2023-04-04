@@ -117,6 +117,15 @@ createApp({
             activeChat.splice(messageIndex, 1);
         },
 
+        deleteAllMessage(contact) {
+            contact.messages = [];
+        },
+
+        deleteChat(index) {
+            this.contacts.splice(index, 1);
+            this.activeContact = -1;
+        },
+
     },
 
     computed: {

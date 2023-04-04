@@ -77,10 +77,14 @@
                             <div class="contact_name">{{contacts[activeContact].name}}</div>
                             <div class="fs-7 last_mex fs_7">{{updateStatus()}}</div>
                         </div>
-                        <div class="icons d-flex gap-3 pe-3">
-                            <i class="fa fa-search "></i>
-                            <i class="fa-solid fa-paperclip"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <div class="icons d-flex">
+                            <i class="fa fa-search p-2"></i>
+                            <i class="fa-solid fa-paperclip p-2"></i>
+                            <i class="fa-solid fa-ellipsis-vertical py-2 px-3" data-bs-toggle="dropdown"></i>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                                <li><a class="dropdown-item" href="#" @click="deleteAllMessage(contacts[activeContact])">Delete all Message</a></li>
+                                <li><a class="dropdown-item" href="#" @click="deleteChat(activeContact)">Delete chat</a></li>
+                            </ul>
                         </div>
                     </header>
                     <!-- /.contact_active header  -->
