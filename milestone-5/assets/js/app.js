@@ -9,6 +9,7 @@ import { randomTextMessages } from "./db.js";
 import { statusList } from "./db.js";
 import { Message } from "./Models/Message.js";
 import { Contact } from "./Models/Contact.js";
+import Picker from './emoji-picker.js';
 
 const { createApp } = Vue
 
@@ -22,7 +23,8 @@ createApp({
             newContactImg: "",
             searcContact: "",
             statusList: statusList,
-            newContactError: ""
+            newContactError: "",
+            showEmoji: false,
 
         }
     },
@@ -158,7 +160,21 @@ createApp({
         scrollDownChat() {
             const el_chat = document.querySelector(".chat");
             el_chat.scrollTo(0, el_chat.scrollHeight);
-        }
+        },
+        onSelectEmoji(emoji) {
+            console.log(emoji)
+            this.messageText += emoji.i;
+            /*
+              // result
+              { 
+                  i: "😚", 
+                  n: ["kissing face"], 
+                  r: "1f61a", // with skin tone
+                  t: "neutral", // skin tone
+                  u: "1f61a" // without tone
+              }
+              */
+        },
     },
 
 
@@ -170,15 +186,12 @@ createApp({
         }
     },
 
-    mounted() {
-    },
-
     updated() {
         // whenever data changes and the component re-renders, this is called.
         this.$nextTick(() => this.scrollDownChat());
     },
 }
-).mount('#app')
+).component('Picker', Picker).mount('#app')
 
 function getRandomTextMessage() {
     const max = randomTextMessages.length;
