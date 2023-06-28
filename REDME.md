@@ -1,4 +1,4 @@
-# Whatsapp - Web app
+# Whatsapp - Replica web-app
 
 **Initial commit**: 31/03/23
 
