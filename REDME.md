@@ -8,7 +8,7 @@
 
 In questo esercizio ho sfruttato Vue.js per dare alla mia pagina la reattività di una single-page-application ricaricando in maniera dinamica i suoi contenuti.
 
-🖇️ Repository:
+🔗 Repository:
 https://github.com/cyberfolk/vue-boolzapp
 
 ## Milestone
