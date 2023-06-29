@@ -6,7 +6,7 @@
 
 💬 Vi presneto la replica di WhatsApp Web per Boolean
 
-In questo esercizio ho sfruttato Vue.js per dare alla mia pagina la reattività di una single-page-application ricaricando in maniera dinamica i suoi contenuti.
+In questo esercizio ho sfruttato Vue.js per dare alla mia pagina la reattività di una single-page-application. Ho implementato la possibilità di inviare messaggi e la simulazione di una risposta automatica, popolando in maniera dinamica la lista dei contatti e dei messaggi tramite il v-for.
 
 🔗 Repository:
 https://github.com/cyberfolk/vue-boolzapp
