@@ -2,7 +2,7 @@
 
 **Initial commit**: 31/03/23
 
-**Tecnologie:** vue.js, js, luxon, html, css e bootstrap.
+**Tecnologie:** Vue.js, JavaScript, Luxon, HTML, CSS e Bootstrap.
 
 💬 Vi presneto la replica di WhatsApp Web per Boolean
 
