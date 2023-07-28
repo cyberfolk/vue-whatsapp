@@ -9,7 +9,6 @@ import { randomTextMessages } from "./db.js";
 import { statusList } from "./db.js";
 import { Message } from "./Models/Message.js";
 import { Contact } from "./Models/Contact.js";
-import Picker from './emoji-picker.js';
 
 const { createApp } = Vue
 
@@ -190,7 +189,7 @@ createApp({
         this.$nextTick(() => this.scrollDownChat());
     },
 }
-).component('Picker', Picker).mount('#app')
+).mount('#app')
 
 function getRandomTextMessage() {
     const max = randomTextMessages.length;
